@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ResumeView = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  }, []);
+
   return (
     <div>
       <section id="resume" className="resume">
@@ -16,7 +27,7 @@ const ResumeView = () => {
           </div>
 
           <div className="row">
-            <div className="col-lg-6" /* data-aos="fade-up" */>
+            <div className="col-lg-6" data-aos="fade-up">
               <h3 className="resume-title">Sumary</h3>
               <div className="resume-item pb-0">
                 <h4>Alex Smith</h4>
@@ -62,10 +73,7 @@ const ResumeView = () => {
                 </p>
               </div>
             </div>
-            <div
-              className="col-lg-6"
-              /* data-aos="fade-up" */ data-aos-delay="100"
-            >
+            <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
               <h3 className="resume-title">Professional Experience</h3>
               <div className="resume-item">
                 <h4>Senior graphic design specialist</h4>

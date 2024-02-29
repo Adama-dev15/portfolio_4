@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import initAOS from "../../../Animation";
 
 const ContactView = () => {
+  useEffect(() => {
+    initAOS();
+  }, []);
+
   return (
     <div>
       <section id="contact" className="contact">

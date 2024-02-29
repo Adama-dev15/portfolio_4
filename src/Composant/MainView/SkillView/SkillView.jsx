@@ -1,7 +1,16 @@
 import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const SkillView = () => {
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+
     const progressBarElements = document.querySelectorAll(".progress-bar");
 
     progressBarElements.forEach((progressBar) => {
@@ -25,7 +34,7 @@ const SkillView = () => {
           </div>
 
           <div className="row skills-content">
-            <div className="col-lg-6" /* data-aos="fade-up" */>
+            <div className="col-lg-6" data-aos="fade-up">
               <div className="progress">
                 <span className="skill">
                   HTML <i className="val">100%</i>
@@ -72,10 +81,7 @@ const SkillView = () => {
               </div>
             </div>
 
-            <div
-              className="col-lg-6"
-              /* data-aos="fade-up"  */ data-aos-delay="100"
-            >
+            <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
               <div className="progress">
                 <span className="skill">
                   PHP <i className="val">80%</i>

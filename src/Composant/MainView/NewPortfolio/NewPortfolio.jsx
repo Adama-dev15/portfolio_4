@@ -1,7 +1,12 @@
 import isotope from "isotope-layout";
 import React, { useEffect } from "react";
+import initAOS from "../../../Animation";
 
 const NewPortfolio = () => {
+  useEffect(() => {
+    initAOS();
+  }, []);
+
   const handlePortfolioWaypointEnter = () => {
     const portfolioContainer = document.querySelector(".portfolio-container");
 
@@ -54,7 +59,7 @@ const NewPortfolio = () => {
             </p>
           </div>
 
-          <div className="row" /* data-aos="fade-up" */>
+          <div className="row" data-aos="fade-up">
             <div className="col-lg-12 d-flex justify-content-center">
               <ul id="portfolio-flters">
                 <li data-filter="*" className="filter-active">
@@ -69,7 +74,7 @@ const NewPortfolio = () => {
 
           <div
             className="row portfolio-container"
-            /*  data-aos="fade-up" */
+            data-aos="fade-up"
             data-aos-delay="100"
           >
             <div className="col-lg-4 col-md-6 portfolio-item filter-app">

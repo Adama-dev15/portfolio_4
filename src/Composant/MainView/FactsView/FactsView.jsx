@@ -1,6 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const FactsView = () => {
+  const [startCounting, setStartCounting] = useState(false);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const factsSection = document.getElementById("facts");
@@ -10,9 +23,7 @@ const FactsView = () => {
       const windowHeight = window.innerHeight;
 
       if (factsSectionTop < windowHeight * 0.75) {
-        // Mettre à jour l'état ou exécuter d'autres actions appropriées
-        console.log("La section de faits est visible!");
-        // Vous pouvez mettre à jour un état ici ou exécuter d'autres actions appropriées
+        setStartCounting(true);
         window.removeEventListener("scroll", handleScroll);
       }
     };
@@ -21,6 +32,43 @@ const FactsView = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (startCounting) {
+      const counters = document.querySelectorAll(".purecounter");
+
+      const animateCounters = () => {
+        counters.forEach((counter) => {
+          const start = +counter.getAttribute("data-purecounter-start");
+          const end = +counter.getAttribute("data-purecounter-end");
+          const duration =
+            +counter.getAttribute("data-purecounter-duration") * 1000;
+
+          let startTime;
+
+          const updateCounter = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+
+            const progress = timestamp - startTime;
+            const value =
+              Math.floor((end - start) * (progress / duration)) + start;
+
+            counter.textContent = value;
+
+            if (progress < duration) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = end;
+            }
+          };
+
+          requestAnimationFrame(updateCounter);
+        });
+      };
+
+      animateCounters();
+    }
+  }, [startCounting]);
 
   return (
     <div>
@@ -37,11 +85,8 @@ const FactsView = () => {
           </div>
 
           <div className="row no-gutters">
-            <div
-              className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
-              /* data-aos="fade-up" */
-            >
-              <div className="count-box">
+            <div className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+              <div className="count-box" data-aos="fade-up">
                 <i className="bi bi-emoji-smile"></i>
                 <span
                   data-purecounter-start="0"
@@ -55,12 +100,8 @@ const FactsView = () => {
               </div>
             </div>
 
-            <div
-              className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
-              /* data-aos="fade-up" */
-              data-aos-delay="100"
-            >
-              <div className="count-box">
+            <div className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+              <div className="count-box" data-aos="fade-up">
                 <i className="bi bi-journal-richtext"></i>
                 <span
                   data-purecounter-start="0"
@@ -74,12 +115,8 @@ const FactsView = () => {
               </div>
             </div>
 
-            <div
-              className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
-              /* data-aos="fade-up" */
-              data-aos-delay="200"
-            >
-              <div className="count-box">
+            <div className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+              <div className="count-box" data-aos="fade-up">
                 <i className="bi bi-headset"></i>
                 <span
                   data-purecounter-start="0"
@@ -93,12 +130,8 @@ const FactsView = () => {
               </div>
             </div>
 
-            <div
-              className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch"
-              /* data-aos="fade-up" */
-              data-aos-delay="300"
-            >
-              <div className="count-box">
+            <div className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+              <div className="count-box" data-aos="fade-up">
                 <i className="bi bi-people"></i>
                 <span
                   data-purecounter-start="0"

@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import initAOS from "../../../Animation";
 
 const ServicesView = () => {
+  useEffect(() => {
+    initAOS();
+  }, []);
+
   return (
     <div>
       <section id="services" className="services">
@@ -16,9 +21,7 @@ const ServicesView = () => {
           </div>
 
           <div className="row">
-            <div
-              className="col-lg-4 col-md-6 icon-box" /* data-aos="fade-up" */
-            >
+            <div className="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
               <div className="icon">
                 <i className="bi bi-briefcase"></i>
               </div>
@@ -32,7 +35,7 @@ const ServicesView = () => {
             </div>
             <div
               className="col-lg-4 col-md-6 icon-box"
-              /* data-aos="fade-up" */
+              data-aos="fade-up"
               data-aos-delay="100"
             >
               <div className="icon">
@@ -48,7 +51,7 @@ const ServicesView = () => {
             </div>
             <div
               className="col-lg-4 col-md-6 icon-box"
-              /*  data-aos="fade-up" */
+              data-aos="fade-up"
               data-aos-delay="200"
             >
               <div className="icon">
@@ -64,7 +67,7 @@ const ServicesView = () => {
             </div>
             <div
               className="col-lg-4 col-md-6 icon-box"
-              /* data-aos="fade-up" */
+              data-aos="fade-up"
               data-aos-delay="300"
             >
               <div className="icon">
@@ -80,7 +83,7 @@ const ServicesView = () => {
             </div>
             <div
               className="col-lg-4 col-md-6 icon-box"
-              /* data-aos="fade-up" */
+              data-aos="fade-up"
               data-aos-delay="400"
             >
               <div className="icon">
@@ -96,7 +99,7 @@ const ServicesView = () => {
             </div>
             <div
               className="col-lg-4 col-md-6 icon-box"
-              /* data-aos="fade-up" */
+              data-aos="fade-up"
               data-aos-delay="500"
             >
               <div className="icon">

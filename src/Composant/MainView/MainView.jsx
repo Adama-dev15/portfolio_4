@@ -16,7 +16,6 @@ const MainView = () => {
       <SkillView />
       <ResumeView />
       <NewPortfolio />
-      {/* <PortfolioView /> */}
       <ServicesView />
       <TestimonialsView />
       <ContactView />

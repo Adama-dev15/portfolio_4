@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AboutView = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  }, []);
+
   return (
     <div>
       <section id="about" className="about">
@@ -16,16 +27,14 @@ const AboutView = () => {
           </div>
 
           <div className="row">
-            <div className="col-lg-4" /* data-aos="fade-right" */>
+            <div className="col-lg-4" data-aos="fade-right">
               <img
                 src="assets/img/profile-img.jpg"
                 className="img-fluid"
                 alt=""
               />
             </div>
-            <div
-              className="col-lg-8 pt-4 pt-lg-0 content" /* data-aos="fade-left" */
-            >
+            <div className="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
               <h3>UI/UX Designer &amp; Web Developer.</h3>
               <p className="fst-italic">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
